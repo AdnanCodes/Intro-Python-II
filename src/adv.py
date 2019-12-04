@@ -40,7 +40,26 @@ room['treasure'].s_to = room['narrow']
 # Make a new player object that is currently in the 'outside' room.
 
 # Write a loop that:
-#
+
+
+def adventure_game():
+    print("Welcome to the Adventure Game")
+
+    while True:
+        command = input("Enter commands --> n, e, s, w OR q to quit: ")
+
+        print(f"You have entered {command!r}")
+
+        if command == 'n':
+            print("Lets go the North Room")
+        elif command == 'q':
+            print("Exiting game")
+            break
+
+
+if __name__ == '__main__':
+    adventure_game()
+
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
