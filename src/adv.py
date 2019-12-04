@@ -1,5 +1,5 @@
 from room import Room
-
+from player import Player
 # Declare all the rooms
 
 room = {
@@ -39,11 +39,15 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
+player = Player("Adnan", room['outside'].name)
+
 # Write a loop that:
 
 
 def adventure_game():
     print("Welcome to the Adventure Game")
+    print(f"Welcome {player.name}!")
+    print(f"Your Current Room is {player.current_room}")
 
     while True:
         command = input("Enter commands --> n, e, s, w OR q to quit: ")
