@@ -47,22 +47,59 @@ player = Player("Adnan", room['outside'])
 def adventure_game():
     print("Welcome to the Adventure Game")
     print(f"Welcome {player}!")
-    print(f"Your Current Room is {player.current_room}")
+    print(f"{player} is {player.current_room}")
 
-# Now player wants to go North Door what's the syntax
-    player.current_room = player.current_room.s_to
-    print(f"Your Current Room is {player.current_room}")
+# Now player wants to go North Door\n what's the syntax
 
-# while True:
-#     command = input("Enter commands --> n, e, s, w OR q to quit: ")
+    while True:
+        command = input("Enter commands --> n, e, s, w OR q to quit: ")
 
-#     print(f"You have entered {command!r}")
+        if command == 'n':
+            print(f"\nYou have entered {command!r}\n")
+        else:
+            print("\n\nPlease select the correct input\n\n")
 
-#     if command == 'n':
-#         print("Lets go the North Room")
-#     elif command == 'q':
-#         print("Exiting game")
-#         break
+        if command == ('n' or 'e' or 's' or 'w' or 'q'):
+            print("Lets go to the North Door\n")
+            if player.current_room.n_to == None:
+                print(
+                    f"Oops, there is no Door here, {player} will remain in {player.current_room}")
+            else:
+                player.current_room = player.current_room.n_to
+                print("Going through the Door\n")
+                print(f"{player}'s room is {player.current_room}")
+
+        if command == 's':
+            print("Lets go to the South Door\n")
+            if player.current_room.s_to == None:
+                print(
+                    f"Oops, there is no Door here, {player} will remain in {player.current_room}")
+            else:
+                player.current_room = player.current_room.s_to
+                print("Going through the Door\n")
+                print(f"{player}'s room is {player.current_room}")
+        if command == 'e':
+            print("Lets go to the East Door\n")
+            if player.current_room.e_to == None:
+                print(
+                    f"Oops, there is no Door here, {player} will remain in {player.current_room}")
+            else:
+                player.current_room = player.current_room.e_to
+                print("Going through the Door\n")
+                print(f"{player}'s room is {player.current_room}")
+
+        if command == 'w':
+            print("Lets go to the West Door\n")
+            if player.current_room.w_to == None:
+                print(
+                    f"Oops, there is no Door here, {player} will remain in {player.current_room}")
+            else:
+                player.current_room = player.current_room.w_to
+                print("Going through the Door\n")
+                print(f"{player}'s room is {player.current_room}")
+        elif command == 'q':
+            print("Exiting game")
+            break
 
 
 if __name__ == '__main__':
