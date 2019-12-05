@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 # Declare all the rooms
 
 room = {
@@ -33,6 +34,19 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+# Adding some items in each room
+
+room['outside'].items.extend(
+    [Item("key", "Rusty looking key"), Item("torch", "9000 Lumens Torch")])
+room['foyer'].items.append(
+    Item("scrap", "scrap of paper, it has something written:Find the teasure"))
+room['overlook'].items.append(Item("binocular", "provides 100x zoom"))
+room['narrow'].items.append(
+    Item("ash", "pile of ash, probably someone set a fire"))
+room['treasure'].items.extend([Item("crown", "rusty looking crown"), Item(
+    "dagger", "it may deliver 5000x damage only if it had better handle")])
+
+
 #
 # Main
 #
@@ -45,21 +59,26 @@ player = Player("Adnan", room['outside'])
 
 
 def adventure_game():
-    print("Welcome to the Adventure Game")
-    print(f"Welcome {player}!")
-    print(f"{player} is {player.current_room}")
-
-# Now player wants to go North Door\n what's the syntax
+    print("\nWelcome to the Adventure Game\n")
+    print(f"\nWelcome {player}!\n")
+    print(f"\n{player} is {player.current_room}\n")
 
     while True:
-        command = input("Enter commands --> n, e, s, w OR q to quit: ")
+        print('There are some items here:\n')
+        for item in player.current_room.items:
+            print(f"{item}")
 
-        if command == 'n':
+        command = input("\nEnter commands --> n, e, s, w OR q to quit: ")
+
+        if command == ('n' or 'e' or 's' or 'w' or 'q'):
             print(f"\nYou have entered {command!r}\n")
+        elif command == 'q':
+            print("Exiting game")
+            break
         else:
             print("\n\nPlease select the correct input\n\n")
 
-        if command == ('n' or 'e' or 's' or 'w' or 'q'):
+        if command == 'n':
             print("Lets go to the North Door\n")
             if player.current_room.n_to == None:
                 print(
@@ -67,7 +86,7 @@ def adventure_game():
             else:
                 player.current_room = player.current_room.n_to
                 print("Going through the Door\n")
-                print(f"{player}'s room is {player.current_room}")
+                print(f"{player}'s room is {player.current_room}\n")
 
         if command == 's':
             print("Lets go to the South Door\n")
@@ -97,9 +116,6 @@ def adventure_game():
                 player.current_room = player.current_room.w_to
                 print("Going through the Door\n")
                 print(f"{player}'s room is {player.current_room}")
-        elif command == 'q':
-            print("Exiting game")
-            break
 
 
 if __name__ == '__main__':
