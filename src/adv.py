@@ -39,26 +39,30 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
-player = Player("Adnan", room['outside'].name)
+player = Player("Adnan", room['outside'])
 
 # Write a loop that:
 
 
 def adventure_game():
     print("Welcome to the Adventure Game")
-    print(f"Welcome {player.name}!")
+    print(f"Welcome {player}!")
     print(f"Your Current Room is {player.current_room}")
 
-    while True:
-        command = input("Enter commands --> n, e, s, w OR q to quit: ")
+# Now player wants to go North Door what's the syntax
+    player.current_room = player.current_room.s_to
+    print(f"Your Current Room is {player.current_room}")
 
-        print(f"You have entered {command!r}")
+# while True:
+#     command = input("Enter commands --> n, e, s, w OR q to quit: ")
 
-        if command == 'n':
-            print("Lets go the North Room")
-        elif command == 'q':
-            print("Exiting game")
-            break
+#     print(f"You have entered {command!r}")
+
+#     if command == 'n':
+#         print("Lets go the North Room")
+#     elif command == 'q':
+#         print("Exiting game")
+#         break
 
 
 if __name__ == '__main__':
