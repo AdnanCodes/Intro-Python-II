@@ -15,3 +15,9 @@ class Room:
 
     def __str__(self):
         return f"{self.name}"
+
+    def getDesc(self):
+        return f"{self.description}"
+
+    def getRoomItems(self):
+        return self.items
