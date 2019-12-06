@@ -21,3 +21,10 @@ class Room:
 
     def getRoomItems(self):
         return self.items
+
+    def addItem(self, item):
+        # player picks item adds to their inventory and Item method is fired
+        self.items.append(item)
+
+    def removeItem(self, item):
+        self.items.remove(item)

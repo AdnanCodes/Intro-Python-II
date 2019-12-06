@@ -93,12 +93,18 @@ def inventory():
                 if itemName in roomItems:
                     player.addItem(
                         player.current_room.getRoomItems()[roomItems.index(itemName)])
-                # Check through current room items for that item
-                # add to player inventory
+                    player.current_room.removeItem(player.current_room.getRoomItems()[
+                                                   roomItems.index(itemName)])
+                else:
+                    print(f"Item you have entered '{itemName}' doesn't exist")
             elif action == "drop":
-                print(action)
-                # Check player inventory
-                # Add it back to room items
+                if itemName in playerItems:
+                    player.current_room.addItem(
+                        player.inventory[playerItems.index(itemName)])
+                    player.removeItem(
+                        player.inventory[playerItems.index(itemName)])
+                else:
+                    print(f"Item you have entered '{itemName}' doesn't exist")
         else:
             print("\n\nPlease select the correct input\n\n")
 
